@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/home/cioc/Desktop/Electron-Com-master/assets/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <title>Elecron Complete</title>
+  </head>
+  <body>
+    <div class="icon">
+      <img src="/home/cioc/Desktop/Electron-Com-master/assets/icons/electron.png" height="100px;" width="100px;" alt="">
+    </div>
+    <div class="container">
+      <form class="" action="index.html" method="post" style="text-align:center; align-items:center;">
+        <label>Login</label><br>
+        <input class="ready" type="email" name="" value="" placeholder="username"><br>
+        <label>Password</label><br>
+        <input class="ready" type="password" name="" value="" placeholder="password"><br>
+        <a id="notify" href="/home/cioc/Desktop/Electron-Com-master/button.html">
+        <input  type="button" style="cursor:pointer;" value="Submit"><br>
+      </a>
+        <a style="color:#fff; font-size:15px;" href="#">forgot password?</a>
+      </form>
+    </div>
+  </body>
+  <script type = "text/javascript">
+         const notifier = require('node-notifier')
+         const path = require('path');
+
+         document.getElementById('notify').onclick = (event) => {
+            notifier.notify ({
+               title: 'My awesome title',
+               message: 'Details Submittrd Succesfully!',
+                icon: path.join('','/home/cioc/Desktop/Electron-Com-master/assets/icons/kisspng-social-app-android-app-store-screenshot-thump-up-5b3933091acc62.5449721815304752731098.jpg'),
+                sound: true,
+                 wait: true
+             },
+             function (err, response) {
+               // Response is response from notification
+            });
+
+            notifier.on('click', function (notifierObject, options) {
+               console.log("You clicked on the notification")
+            });
+
+            notifier.on('timeout', function (notifierObject, options) {
+               console.log("Notification timed out!")
+            });
+         }
+      </script>
+  <script>
+   // You can also require other files to run in this process
+   require('./renderer.js')
+ </script>
+ <script src="main.js"></script>
+</html>
